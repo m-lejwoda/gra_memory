@@ -27,6 +27,28 @@ const clickCard = function ()
         {
             card.removeEventListener("click", clickCard);
         })
+        activeCards[1] = activeCard;
+        setTimeout(function () {
+            if (activeCards[0].className === activeCards[1].className) {
+                activeCards.forEach(card => card.classList.add("off"))
+                gameResult++;
+                if (gameResult == gamePairs)
+                {
+                    const endTime = new Date().getTime();
+                    constgameTime = (endTime - startTime) / 1000;
+                    alert(`Uda³o siê Czas to ${gameTime} sekund`);
+                    location.reload();
+                }
+
+            } else {
+                activeCards.forEach(card => card.classList.add("hidden"))
+            }
+            activeCard = "";
+            activeCards.length = 0;
+            cards.forEach(card => card.addEventListener("click", clickCard))
+
+        }, 500)
+        
     }
 
 };
