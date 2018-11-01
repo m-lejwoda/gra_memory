@@ -10,5 +10,8 @@ const init = function ()
     cards.forEach(function (card)
     {
         const position = Math.floor(Math.random() * cardsColor.length);
+        card.classList.add(cardsColor[position]);
+        cardsColor.splice(position,1);
     })
 }
+init()
